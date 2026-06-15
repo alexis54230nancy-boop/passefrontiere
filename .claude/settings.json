@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://uyqpdqwbvucufsyctwq.supabase.co/rest/v1/\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5cXBkcXdidnVjdWZzeWN0d2VxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NTk3MjYsImV4cCI6MjA5NzAzNTcyNn0.9RpkEDmOR_D_koIKNfu6JB_TUTB6eHNqgZ3XlETW0bU\")"
+    ]
+  }
+}

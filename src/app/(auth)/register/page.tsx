@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -21,16 +20,15 @@ export default function RegisterPage() {
     setError(null)
 
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: { data: { full_name: fullName } },
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, fullName }),
       })
+      const data = await res.json()
 
-      if (error) {
-        setError(error.message)
-        setLoading(false)
+      if (!res.ok) {
+        setError(data.error ?? 'Une erreur est survenue.')
         return
       }
 
