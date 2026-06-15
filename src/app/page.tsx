@@ -38,7 +38,10 @@ export default function LandingPage() {
       {/* NAV */}
       <nav className={s.nav}>
         <span className={s.logo}>Passe<span>Frontière</span></span>
-        <a href="#rejoindre" className={s.ctaNav}>Rejoindre la liste</a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link href="/login" className={s.navLogin}>Se connecter</Link>
+          <Link href="/register" className={s.ctaNav}>Créer un compte</Link>
+        </div>
       </nav>
 
       {/* HERO */}
@@ -318,6 +321,8 @@ export default function LandingPage() {
         <a href="#">Confidentialité</a>
         {' '}·{' '}
         <Link href="/login" style={{ color: 'inherit' }}>Connexion</Link>
+        {' '}·{' '}
+        <Link href="/register" style={{ color: 'inherit' }}>Créer un compte</Link>
       </footer>
     </div>
   )

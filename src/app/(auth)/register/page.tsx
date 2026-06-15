@@ -15,24 +15,31 @@ export default function RegisterPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!fullName || !email || !password) { setError('Remplissez tous les champs.'); return }
+    if (password.length < 8) { setError('Le mot de passe doit faire au moins 8 caractères.'); return }
     setLoading(true)
     setError(null)
 
-    const supabase = createClient()
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: fullName } },
-    })
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: fullName } },
+      })
 
-    if (error) {
-      setError(error.message)
+      if (error) {
+        setError(error.message)
+        setLoading(false)
+        return
+      }
+
+      setSuccess(true)
+    } catch {
+      setError('Impossible de contacter le serveur. Vérifiez votre connexion.')
+    } finally {
       setLoading(false)
-      return
     }
-
-    setSuccess(true)
-    setLoading(false)
   }
 
   if (success) {

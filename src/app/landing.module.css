@@ -25,6 +25,14 @@
   text-decoration: none;
 }
 .logo span { color: #2E6FD4; }
+.navLogin {
+  color: #2E6FD4;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navLogin:hover { color: #1A4A8C; }
 .ctaNav {
   background: #2E6FD4;
   color: #ffffff;
